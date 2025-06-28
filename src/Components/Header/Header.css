@@ -4,6 +4,10 @@
     background:  url('/header_img.png') no-repeat !important;
     background-size: contain;
     position: relative;
+    width: 100%;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+    border-bottom-left-radius: 22px;
 }
 .header-contents{
     position: absolute;

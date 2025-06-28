@@ -4,13 +4,13 @@ import ReactContext from '../../Context/Context'
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
-  const {contextValue,eachCartItemsCount,removeFromCart,cartTotalAmount}  = use(ReactContext);
+  const {listOfItems,eachCartItemsCount,removeFromCart,cartTotalAmount, toggleTheme}  = use(ReactContext);
   const navigate = useNavigate()
   return (
     <div className='cart'>
         <div className="cart-items">
           <div className="cart-items">
-            <div className="cart-items-title">
+            <div className={toggleTheme?"cart-items-titleRight":"cart-items-title"}>
               <p>Items</p>
               <p>Title</p>
               <p>Price</p>
@@ -20,11 +20,11 @@ const Cart = () => {
             </div>
             <br/>
             <hr/>
-            {contextValue.map((item,index)=>{
+            {listOfItems.map((item,index)=>{
                 if (eachCartItemsCount[item._id]>0){
                   return(
                     <div key={index}>
-                    <div  className='cart-items-title cart-items-item'>
+                    <div  className={toggleTheme ? "cart-items-titleRight cart-items-itemRight": 'cart-items-title cart-items-item'}>
                         <img src={item.image} alt="" />
                         <p>{item.name}</p>
                         <p>${item.price}</p>
@@ -40,27 +40,27 @@ const Cart = () => {
           </div>
         </div>
         <div className="cart-bottom">
-          <div className="cart-total">
+          <div className={toggleTheme? "cart-totalRight": "cart-total"}>
             <h2>Cart Totals</h2>
             <div>
-              <div className="cart-total-details">
+              <div className={toggleTheme? "cart-total-detailsRight": "cart-total-details"}>
                 <p>Subtotal</p>
                 <p>${cartTotalAmount()}</p>
               </div>
               <hr/>
-              <div className="cart-total-details">
+              <div className={toggleTheme? "cart-total-detailsRight": "cart-total-details"}>
                 <p>Delivery Fee</p>
                 <p>${cartTotalAmount()===0? 0 : 18}</p>
               </div>
               <hr/>
-              <div className="cart-total-details">
+              <div className={toggleTheme? "cart-total-detailsRight": "cart-total-details"}>
                 <b>Total</b>
                 <b>${cartTotalAmount()===0 ? 0 : cartTotalAmount()+18}</b>
               </div>
               <button onClick={()=>navigate('/order')}>PROCEED TO CHECKOUT</button>
             </div>
           </div>
-          <div className="cart-promocode">
+          <div className={toggleTheme ? "cart-promocodeRight" : "cart-promocode"}>
             <div>
               <p>If you have a promo code, Enter It Here</p>
               <div className="cart-promo-code-input">

@@ -4,7 +4,13 @@
     padding: 20px 0;
     align-items: center;
     background: white;
-
+}
+.navbarRight{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    align-items: center;
 }
 .navbar .logo{
     width: 150px;
@@ -16,10 +22,17 @@
     color: #49557e;
     font-size: 18px;
 }
+.navbar-menu-right{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    color: white;
+    font-size: 18px;
+}
 .navbar-right{
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 25px;
 }
 .navbar button{
     background: transparent;
@@ -31,10 +44,20 @@
     cursor: pointer;
     transition: 0.3s;
 }
+.navbarRight button{
+    background: transparent;
+    font-size: 16px;
+    color: white;
+    border: 1px solid tomato;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 .navbar button:hover{
     background-color: #fff4f2;
 }
-.navbar .active{
+.navbar .navbarRight .active{
     padding-bottom: 3px;
     border-bottom: 2px solid #eb7d24;
 }
@@ -57,8 +80,15 @@
     .navbar .logo{
         width: 140px;
     }
+    .navbarRight .logo{
+        width: 140px;
+    }
     .navbar-menu{
         gap: 20px;
+        font-size: 17px;
+    }
+    .navbar-menuRight{
+         gap: 20px;
         font-size: 17px;
     }
     .navbar-right{
@@ -73,6 +103,9 @@
 }
 @media screen and (max-width:900px){
     .navbar .logo{
+        width: 120px;
+    }
+    .navbarRight .logo{
         width: 120px;
     }
     .navbar-menu{
@@ -96,6 +129,12 @@
         display: none;
         font-size: 15px;
     }
+    .navbar-menu-right{
+         gap: 15px;
+        display: none;
+        font-size: 15px;
+         font-size: 15px;
+    }
     .navbar-right{
         gap: 20px;
     }
@@ -105,5 +144,44 @@
     .navbar-right button{
         padding: 7px 20px;
         font-size: 15px;
+    }
+}
+.toggleTheme{
+    border: 1px solid grey;
+    width: max(4.5vw, 60px);
+    height: 35px;
+    position: relative;
+    border-radius: 999px;
+    cursor: pointer;
+}
+.themeBallLeft{
+    background-color: grey;
+    height: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    border-radius: 999px;
+    width: 30px;
+}
+.themeBallRight{
+    right: 2px !important;
+     background-color: grey;
+    height: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 2px;
+    border-radius: 999px;
+    width: 30px;
+}
+@media screen and (max-width: 426px){
+    .themeBallLeft,.themeBallRight{
+        width: 25px;
+        top: 4px;
+        left: 3px;
+        height: 25px;
+    }
+    .themeBallRight{
+        right: 3px;
     }
 }

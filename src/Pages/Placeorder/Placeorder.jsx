@@ -2,10 +2,10 @@ import React, { use } from 'react'
 import './Placeorder.css'
 import ReactContext from '../../Context/Context'
 const Placeorder = () => {
-  const {cartTotalAmount} = use(ReactContext)
+  const {cartTotalAmount,toggleTheme} = use(ReactContext)
   return (
-    <form className='place-order'>
-      <div className="place-order-left">
+    <form className={toggleTheme? "place-orderright":'place-order'}>
+      <div className={toggleTheme? "place-order-leftRight":"place-order-left"}>
         <p className='title'>Delivery Information</p>
         <div className="multi-fields">
           <input type="text" placeholder='First Name'/>
@@ -24,20 +24,20 @@ const Placeorder = () => {
         <input type="text" placeholder='Phone' />
       </div>
       <div className="place-order-right">
-          <div className="cart-total">
+          <div className={toggleTheme? "cart-totalRight" : "cart-total"}>
             <h2>Cart Totals</h2>
             <div>
-              <div className="cart-total-details">
+              <div className={toggleTheme? "cart-total-detailsRight": "cart-total-details"}>
                 <p>Subtotal</p>
                 <p>${cartTotalAmount()}</p>
               </div>
               <hr/>
-              <div className="cart-total-details">
+              <div className={toggleTheme? "cart-total-detailsRight": "cart-total-details"}>
                 <p>Delivery Fee</p>
                 <p>${cartTotalAmount()===0? 0 : 18}</p>
               </div>
               <hr/>
-              <div className="cart-total-details">
+              <div className={toggleTheme? "cart-total-detailsRight": "cart-total-details"}>
                 <b>Total</b>
                 <b>${cartTotalAmount()===0 ? 0 : cartTotalAmount()+18}</b>
               </div>

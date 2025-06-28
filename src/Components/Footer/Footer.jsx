@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { use } from 'react'
 import './Footer.css'
 import { assets } from '../../assets/assets'
+import ReactContext from '../../Context/Context'
 const Footer = () => {
+const {toggleTheme} = use(ReactContext)
   return (
-    <div className='footer' id='footer'>
+    <div className={toggleTheme ? 'footerRight' : 'footer'} id='footer'>
         <div className="footer-content">
             <div className="footer-content-left">
                 <img src={assets.logo} alt="" />
@@ -19,7 +21,7 @@ const Footer = () => {
                 <ul>
                     <li>Home</li>
                     <li>About Us</li>
-                    <li>Deliveyr</li>
+                    <li>Delivery</li>
                     <li>Privacy Policy</li>
                 </ul>
             </div>

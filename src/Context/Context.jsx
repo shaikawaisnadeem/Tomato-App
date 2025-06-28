@@ -1,11 +1,13 @@
 import { createContext } from "react";
 
 const ReactContext = createContext({
-  contextValue: [],
+  listOfItems: [],
   eachCartItemsCount: [],
   addToCart: () => { },
   removeFromCart: () => { },
-  cartTotalAmount: ()=>{}
+  cartTotalAmount: ()=>{},
+  toggleTheme: false,
+  setToggleRightFun: ()=>{}
 });
 
 export default ReactContext;

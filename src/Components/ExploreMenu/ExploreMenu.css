@@ -3,6 +3,15 @@
     flex-direction: column;
     gap: 20px ;
 }
+.explore-menu-right{
+    display: flex;
+    flex-direction: column;
+    gap: 20px ;
+}
+.explore-menu-right h1{
+    color: white;
+    font-weight: 500;
+}
 .explore-menu h1{
     color: #262626;
     font-weight: 500;
@@ -30,9 +39,15 @@
     border-radius: 50%;
     transition: 0.2s;
 }
-.explore-menu-list-item p{
+.explore-menu-list-item .menuName{
     margin-top: 10px;
     color: #747474;
+    font-size: max(1.4vw, 16px);
+    cursor: pointer;
+}
+.explore-menu-list-item .menuNameRight{
+    margin-top: 10px;
+    color: white;
     font-size: max(1.4vw, 16px);
     cursor: pointer;
 }

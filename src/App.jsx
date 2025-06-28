@@ -10,7 +10,7 @@ import Footer from './Components/Footer/Footer'
 import LoginPopup from './Components/LoginPopup/LoginPopup'
 
 const App = () => {
-  const foodValue = food_list
+  const listOfItems = food_list
   // console.log(foodValue)
   const [eachCartItemsCount , seteachCartItemsCount ] = useState({})
 
@@ -44,25 +44,30 @@ const getTotalCartAmount = ()=>{
   let totalAmount = 0;
   for(const item in eachCartItemsCount){
     if (eachCartItemsCount[item]>0){
-    let itemInfo = foodValue.find((product)=>product._id===item);
+    let itemInfo = listOfItems.find((product)=>product._id===item);
     totalAmount+= itemInfo.price * eachCartItemsCount[item];
     }
   } 
   return totalAmount
 }
-
+  const [toggleRight, setToggleRight] = useState(false)
   const [showLogin, setShowLogin] = useState(false)
-
+  const setToggleRightFun = ()=>{
+    setToggleRight(prev=>!prev)
+  }
   return (
-    <ReactContext value={{contextValue:foodValue, addToCart: addToCart, removeFromCart:removeFromCart, eachCartItemsCount:eachCartItemsCount,cartTotalAmount:getTotalCartAmount}}>
+    <ReactContext value={{toggleTheme:toggleRight,setToggleRightFun:setToggleRightFun, listOfItems:listOfItems, addToCart: addToCart, removeFromCart:removeFromCart, eachCartItemsCount:eachCartItemsCount,cartTotalAmount:getTotalCartAmount}}>
       {showLogin? <LoginPopup setShowLogin={setShowLogin}/> : <></>}
-    <div className='app'>
+    <div className={toggleRight? 'app-right' : 'app'}>
+      <div className='adjust-width'>
       <Navbar setShowLogin={setShowLogin}/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/order' element={<Placeorder/>}/>
       </Routes>
+         
+      </div>
     </div>
     <Footer/>
     </ReactContext>

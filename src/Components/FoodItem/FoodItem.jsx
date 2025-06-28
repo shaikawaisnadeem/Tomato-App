@@ -4,9 +4,9 @@ import { assets } from '../../assets/assets'
 import ReactContext from '../../Context/Context'
 
 const FoodItem = ({id, name, price, description, image}) => {
-    const {eachCartItemsCount, addToCart, removeFromCart} = use(ReactContext)
+    const {eachCartItemsCount, addToCart, removeFromCart,toggleTheme} = use(ReactContext)
   return (
-    <div className='food-item'>
+    <div className={toggleTheme? 'food-itemright':'food-item'}>
         <div className="food-item-image-container">
             <img src={image} className='food-item-image' alt="" />
             {!eachCartItemsCount[id] ? <img className='add' onClick={()=>addToCart(id)} src={assets.add_icon_white}/> :
@@ -17,7 +17,7 @@ const FoodItem = ({id, name, price, description, image}) => {
             </div>}
         </div>
         <div className="food-item-info">
-            <div className="food-item-name-rating">
+            <div className={toggleTheme ? "food-item-name-ratingRight": "food-item-name-rating"}>
                 <p>{name}</p>
                 <img src={assets.rating_starts}/>
             </div>

@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { use } from 'react'
 import './ExploreMenu.css'
 import { menu_list } from '../../assets/assets'
+import ReactContext from '../../Context/Context'
 const ExploreMenu = (props) => {
     const {setCategory, category} = props 
+    const {toggleTheme} = use(ReactContext)
 
   return (
-    <div className='explore-menu' id='explore-menu'>
+    <div className={toggleTheme ? 'explore-menu-right' : 'explore-menu'} id='explore-menu'>
         <h1>Explore Our Menu</h1>
         <p className='explore-menu-text'>Choose from a diverse menu featuring a delectable array of dishes crafted with the finest ingredients and culinary expertise. Ou mission is to satisfy your cravings and elevate your dining experience, one delicious mean at a time.</p>
         <div className="explore-menu-list">
@@ -13,7 +15,7 @@ const ExploreMenu = (props) => {
                 return(
                     <div onClick={()=>setCategory(prev=>prev===item.menu_name ? 'All' : item.menu_name)} key={index} className='explore-menu-list-item'>
                         <img className={category===item.menu_name ? 'active' : ''} src={item.menu_image}/>
-                        <p>{item.menu_name}</p>
+                        <p className={toggleTheme ? 'menuNameRight' : 'menuName'}>{item.menu_name}</p>
                     </div>
                 )
             })}
